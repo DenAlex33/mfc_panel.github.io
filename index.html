@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ-панель</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        h1 {
+            color: #333;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Админ-панель</h1>
+    <button class="button" onclick="sendCommand('mfc_admin_sklad')">Просмотр склада</button>
+    <button class="button" onclick="sendCommand('mfc_write_product')">Списание мат товаров</button>
+    <button class="button" onclick="sendCommand('generate_report')">Сформировать отчёт о списании</button>
+
+    <script>
+        // Проверка, поддерживает ли Telegram Web App
+        if (window.Telegram.WebApp) {
+            Telegram.WebApp.expand();  // Разворачиваем Web App на весь экран
+        } else {
+            alert('Telegram Web App не поддерживается в вашем браузере.');
+        }
+
+        // Функция отправки команды боту
+        function sendCommand(command) {
+            Telegram.WebApp.sendData(command);  // Отправка данных боту
+            alert('Команда "' + command + '" отправлена!');
+        }
+    </script>
+</body>
+</html>
