@@ -49,6 +49,12 @@
             Telegram.WebApp.sendData(command);  // Отправка данных боту
             alert('Команда "' + command + '" отправлена!');
         }
+        // Проверка, поддерживает ли Telegram Web App
+if (window.Telegram.WebApp) {
+    Telegram.WebApp.expand();  // Разворачиваем Web App на весь экран
+} else {
+    alert('Telegram Web App не поддерживается в вашем браузере.');
+}
     </script>
 </body>
 </html>
